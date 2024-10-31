@@ -1,0 +1,19 @@
+# Ignore development and build artifacts
+bin/
+obj/
+.git/
+.gitignore
+README.md
+
+# Ignore local configurations
+*.user
+*.suo
+*.cache
+
+# Ignore IDE-specific files
+.vs/
+.vscode/
+
+# Ignore logs and temporary files
+*.log
+*.tmp

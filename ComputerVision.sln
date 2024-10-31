@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerVision.API", "ComputerVision.API\ComputerVision.API.csproj", "{0FD0806F-145F-4F41-B142-5BBF5F7490EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerVision.API", "ComputerVision.API\ComputerVision.API.csproj", "{0FD0806F-145F-4F41-B142-5BBF5F7490EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerVision.Data", "ComputerVision.Data\ComputerVision.Data.csproj", "{9D746879-33AF-415D-9A53-0765C1FEBE24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerVision.Data", "ComputerVision.Data\ComputerVision.Data.csproj", "{9D746879-33AF-415D-9A53-0765C1FEBE24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
