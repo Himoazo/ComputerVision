@@ -114,7 +114,7 @@ public class ImageController(IFileService fileService, IImageRepository imageRep
     }
     
     [HttpGet]
-    [Authorize]
+    //[Authorize]
     public async Task<IActionResult> GetImages()
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
