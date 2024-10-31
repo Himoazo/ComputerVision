@@ -19,6 +19,14 @@ RUN dotnet publish -c Release -o /app/out
 # Create runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
+
+# Create Uploads directory with proper permissions
+RUN mkdir -p /app/Uploads && chmod 777 /app/Uploads
+
+# Set environment variable for uploads path
+ENV UPLOADS_PATH=/app/Uploads
+
+# Copy published output
 COPY --from=build-env /app/out .
 
 # Expose the port the app runs on
