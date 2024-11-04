@@ -4,9 +4,10 @@ namespace ComputerVision.Data.Services;
 
 public class Blur
 {
+    // Suddighets filter
     public void BlurFilter (int height, int width, RGBTriple[,] image)
     {
-        RGBTriple[,] temp = new RGBTriple[height, width];
+        RGBTriple[,] temp = new RGBTriple[height, width]; //temporär 2d array
 
         float n = 0;
 
@@ -20,14 +21,14 @@ public class Blur
 
                 n = 0;
 
-                for (int k = i - 3; k <= i + 3; k++)
+                for (int k = i - 3; k <= i + 3; k++)  //obs iteration 3 steg bakot och 3 steg framåt
                 {
                     if (k < 0 || k >= height)
                     {
                         continue;
                     }
 
-                    for (int l = j - 3; l <= j + 3; l++)
+                    for (int l = j - 3; l <= j + 3; l++) //obs iteration 3 steg bakot och 3 steg framåt
                     {
                         if (l < 0 || l >= width)
                         {

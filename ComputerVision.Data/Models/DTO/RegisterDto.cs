@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ComputerVision.Data.Models.DTO;
 
+// strukturerar nya användarens registrerings data
 public class RegisterDto
 {
     [Required]
@@ -20,6 +21,7 @@ public class RegisterDto
     public string? Password { get; set; }
 }
 
+//Skickas med som svar status 200ok i båda login och regiser metoder i account controller. Hanterar JWT
 public class NewUserDto
 {
     [Required]
@@ -30,6 +32,7 @@ public class NewUserDto
     public string? Token { get; set; }
 }
 
+// Strukturerar användarens inloggnings uppgifter
 public class LoginDto
 {
     [Required]

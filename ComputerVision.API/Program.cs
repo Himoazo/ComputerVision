@@ -10,16 +10,15 @@ using ComputerVision.Data.Services;
 using Microsoft.OpenApi.Models;
 
 
-
+//Sätter upp applikationen
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Swagger inställningar
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -48,10 +47,11 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-
+// Sätt SQLite som databas
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// ASP.NET Identity lösenords inställningar
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
     options.Password.RequiredLength = 10;
@@ -62,6 +62,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }
 ).AddEntityFrameworkStores<ApplicationDbContext>();
 
+// JWT inställningar
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -91,6 +92,7 @@ builder.Services.AddTransient<IFileService, FileService>();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+//Cors inställningar, acceptera alla origins
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
@@ -102,25 +104,26 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Run migrations
+// Migrations
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     dbContext.Database.Migrate();
 }
 
-// Configure the HTTP request pipeline.
+// Kör Swagger i utvecklingsmiljö
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection(); //httpS
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+//Leverera statiska filer från Uploads
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(

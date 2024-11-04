@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*using System;
+using System.Collections.Generic;*/
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+/*using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;*/
 using Microsoft.AspNetCore.Http;
 
 namespace ComputerVision.Data.Models.DTO;
+
+// Presenterar appens olika filter
 public enum FilterType
 {
     sobel,
@@ -14,6 +16,8 @@ public enum FilterType
     reflect,
     grayscale
 }
+
+//Strukturerar bildfil info som användaren laddar upp
 public class ImageDTO
 {
     [Required]
@@ -30,7 +34,7 @@ public class ImageDTO
     public FilterType Filter {  get; set; }
 }
 
-public class ImageUpdateDTO
+/*public class ImageUpdateDTO
 {
 
 [Required]
@@ -48,4 +52,4 @@ public string? ImageMaterial { get; set; }
 public string? ImageUrl { get; set; }
 
 public IFormFile? ImageFile { get; set; }
-}
+}*/

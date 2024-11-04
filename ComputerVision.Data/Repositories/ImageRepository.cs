@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ComputerVision.Data.Repositories;
 
+// Interfacet definierar vilka CRUD funktioner mot databasen ska rävande klassen implementera
 public interface IImageRepository
 {
     Task<Image> AddImageAsync(Image image);
@@ -13,6 +14,7 @@ public interface IImageRepository
     Task DeleteImageAsync(Image image);
 }
 
+//Klass implementerar IImageRepository
 public class ImageRepository(ApplicationDbContext context) : IImageRepository
 {
     
