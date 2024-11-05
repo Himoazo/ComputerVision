@@ -74,7 +74,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.TokenValidationParameters = new TokenValidationParameters
+    /*options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidIssuer = builder.Configuration["JWT:Issuer"],
@@ -84,6 +84,22 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(
             System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Signingkey"]!)    
         )
+    };*/
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = Environment.GetEnvironmentVariable("JWT__Issuer") ?? throw new InvalidOperationException("JWT Issuer is not configured"),
+
+        ValidateAudience = true,
+        ValidAudience = Environment.GetEnvironmentVariable("JWT__Audience") ?? throw new InvalidOperationException("JWT Audience is not configured"),
+
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(
+        System.Text.Encoding.UTF8.GetBytes(
+            Environment.GetEnvironmentVariable("JWT__Signingkey")
+            ?? throw new InvalidOperationException("JWT Signing Key is not configured")
+        )
+    )
     };
 });
 
