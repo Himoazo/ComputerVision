@@ -64,6 +64,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 
 // JWT inställningar
+Console.WriteLine("SigningKey: " + builder.Configuration["JWT:Signingkey"]);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
