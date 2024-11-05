@@ -64,6 +64,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 
 // JWT inställningar
+Console.WriteLine("Issuer: " + builder.Configuration["JWT:Issuer"]);
+Console.WriteLine("Audience: " + builder.Configuration["JWT:Audience"]);
 Console.WriteLine("SigningKey: " + builder.Configuration["JWT:Signingkey"]);
 builder.Services.AddAuthentication(options =>
 {
