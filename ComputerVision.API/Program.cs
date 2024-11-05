@@ -62,6 +62,11 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }
 ).AddEntityFrameworkStores<ApplicationDbContext>();
 
+//Debugging
+Console.WriteLine($"Environment JWT__Signingkey: {Environment.GetEnvironmentVariable("JWT__Signingkey")}");
+Console.WriteLine($"Configuration JWT:Signingkey: {builder.Configuration["JWT:Signingkey"]}");
+// ********
+
 // JWT inställningar
 builder.Services.AddAuthentication(options =>
 {
@@ -73,6 +78,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
+    var signingKey = builder.Configuration["JWT:Signingkey"]; //****
+    Console.WriteLine($"Final signingKey value: {signingKey}"); //***
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
