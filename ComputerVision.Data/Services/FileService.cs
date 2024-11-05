@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-//using System.Runtime.Versioning;
 using ComputerVision.Data.Services;
 using ComputerVision.Data.Models.DTO;
 

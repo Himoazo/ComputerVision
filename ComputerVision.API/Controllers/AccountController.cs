@@ -1,6 +1,4 @@
-﻿/*using ComputerVision.Data.Repositories;
-using ImageManipulation.Data.Services;*/
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ComputerVision.Data.Models;
 using ComputerVision.Data.Models.DTO;

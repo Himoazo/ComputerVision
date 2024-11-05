@@ -1,5 +1,4 @@
-﻿
-using ImageManipulation.Data.Services;
+﻿using ImageManipulation.Data.Services;
 
 namespace ComputerVision.Data.Services;
 
