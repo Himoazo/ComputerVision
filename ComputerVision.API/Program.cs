@@ -124,7 +124,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection(); //httpS
+
+if(app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection(); //httpS
+}
+
 
 app.UseAuthentication();
 app.UseAuthorization();
