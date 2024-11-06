@@ -64,6 +64,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 
 // JWT inställningar
+
+Console.WriteLine("JWT:Issuer: " + builder.Configuration["JWT:Issuer"]); // printar issuer
+Console.WriteLine("JWT:Audience: " + builder.Configuration["JWT:Audience"]); // printar audience
+Console.WriteLine("JWT:Signingkey " + builder.Configuration["JWT:Signingkey"]); //printar key
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -77,18 +81,13 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = Environment.GetEnvironmentVariable("JWT__Issuer") ?? throw new InvalidOperationException("JWT Issuer is not configured"),
-
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
         ValidateAudience = true,
-        ValidAudience = Environment.GetEnvironmentVariable("JWT__Audience") ?? throw new InvalidOperationException("JWT Audience is not configured"),
-
+        ValidAudience = builder.Configuration["JWT:Audience"],
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-        System.Text.Encoding.UTF8.GetBytes(
-            Environment.GetEnvironmentVariable("JWT__Signingkey")
-            ?? throw new InvalidOperationException("JWT Signing Key is not configured")
+            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Signingkey"]!)
         )
-    )
     };
 });
 
